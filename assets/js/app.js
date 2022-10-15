@@ -25,35 +25,30 @@
 	
 	const rep = /\-|\ |\./g;
 
+	let test = false;
+
 	function checking(num){
 
-		let test = false;
 		let sum = 0;
 
-		let j = num;
+		for(let i = 0; i < num.length; i++){
+        if(i % 2 == 0){
+            sum = sum + num[i];
+        }else {
+            let n = num[i] * 2;
+            sum = sum + (n > 9 ? n - 9 : n);
+        }
+    }
 
-		j = j.toString().split('').reverse().map((item) => +item).join('');
+    if((sum % 10) == 0){
 
-		j = parseInt(j);
+        test = true;
 
-		console.log('in',j, typeof(j));
+    }else{
 
-		for(let i = 0; i < j.length; i++){
-			if(i % 2 == 0){
-				sum = sum + j[i];
-			}else {
-				let n = j[i] * 2;
-				sum = sum + (n > 9 ? n - 9 : n);
-			}
-		}
+        test = false;
 
-		console.log('sum',sum);
-	
-		if((sum % 10) == 0){
-			test = true;
-		}else{
-			test = false;
-		}
+    }
 
 		return test;
 
@@ -64,14 +59,20 @@
 	for(let i = 0; i < result2.length; i++){
 
 		result2[i] = result2[i].replace(rep, "");
-		
-		result2[i] = Number(result2[i]);
 
-		console.log('out', result2[i]);
+		let glob = result2[i];
 
-		let test = checking(result2[i]);
+		glob = [...glob]
+		.reverse()
+		.map((item) => +item);
 
-		console.log(test);
+		//console.log('card', glob);
+
+		//console.log('out', result2[i]);
+
+		let test = checking(glob);
+
+		//console.log(test);
 
 		if(test == true){
 
@@ -90,15 +91,15 @@
 
 	for (let item of result) {
 
-		item = Number(item);
-
 		//console.log(item, typeof(item));
 		
-		// item = [...item]
-		// .reverse()
-		// .map((item1) => +item1);
+		let glob = item;
 
-		let test = checking(item);
+		glob = [...glob]
+		.reverse()
+		.map((item1) => +item1);
+
+		let test = checking(glob);
 
 		if(test == true){
 
