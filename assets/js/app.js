@@ -30,14 +30,24 @@
 		let test = false;
 		let sum = 0;
 
-		for(let i = 0; i < num.length; i++){
+		let j = num;
+
+		j = j.toString().split('').reverse().map((item) => +item).join('');
+
+		j = parseInt(j);
+
+		console.log('in',j, typeof(j));
+
+		for(let i = 0; i < j.length; i++){
 			if(i % 2 == 0){
-				sum = sum + num[i];
+				sum = sum + j[i];
 			}else {
-				let n = num[i] * 2;
+				let n = j[i] * 2;
 				sum = sum + (n > 9 ? n - 9 : n);
 			}
 		}
+
+		console.log('sum',sum);
 	
 		if((sum % 10) == 0){
 			test = true;
@@ -54,10 +64,16 @@
 	for(let i = 0; i < result2.length; i++){
 
 		result2[i] = result2[i].replace(rep, "");
-
+		
 		result2[i] = Number(result2[i]);
 
-		if(checking(result2[i])){
+		console.log('out', result2[i]);
+
+		let test = checking(result2[i]);
+
+		console.log(test);
+
+		if(test == true){
 
 			console.log('Vallible', result2[i]);
 
@@ -77,8 +93,14 @@
 		item = Number(item);
 
 		//console.log(item, typeof(item));
+		
+		// item = [...item]
+		// .reverse()
+		// .map((item1) => +item1);
 
-		if(checking(item)){
+		let test = checking(item);
+
+		if(test == true){
 
 			console.log('Vallible', item);
 
