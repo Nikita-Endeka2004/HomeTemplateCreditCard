@@ -48,17 +48,29 @@
 		return test;
 
 	}
+	
+	//console.log(result2);
 
-	// for (let item of result2) {
+	for(let i = 0; i < result2.length; i++){
 
-	// 	result2.slice(0,result2.length).replace(rep, '');
+		result2[i] = result2[i].replace(rep, "");
 
-	// 	console.log(result2);
-		
-	// }
+		result2[i] = Number(result2[i]);
 
-	console.log(result2);
-	console.log(result);
+		if(checking(result2[i])){
+
+			console.log('Vallible', result2[i]);
+
+		}else{
+
+			console.log('No vallible', result2[i]);
+
+		}
+
+	}
+
+	//console.log(result2);
+	//console.log(result);
 
 	for (let item of result) {
 
